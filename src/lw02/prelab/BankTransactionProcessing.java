@@ -12,7 +12,6 @@ public class BankTransactionProcessing {
         Queue<String[]> transactionQueue = new LinkedList<>();
         Stack<String[]> failedWithdrawals = new Stack<>();
 
-        // Read each transaction and register customers in first-appearance order.
         try (Scanner input = new Scanner(new File("transactions.txt"))) {
             while (input.hasNextLine()) {
                 String line = input.nextLine().trim();
@@ -36,7 +35,6 @@ public class BankTransactionProcessing {
             }
         }
 
-        // Move transactions to the queue so they are processed in FIFO order.
         while (!transactions.isEmpty()) {
             transactionQueue.offer(transactions.removeFirst());
         }
